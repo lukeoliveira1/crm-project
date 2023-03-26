@@ -6,24 +6,29 @@
     <div class="index-main">
       <h1> Sales </h1>
 
-      <a href="{% url 'create_sale' %}"> <h2> Cadastrar venda </h2> </a>
+      {% if request.user.is_authenticated %}
 
-      {% if sales %}
+        <a href="{% url 'create_sale' %}"> <h2> Cadastrar venda </h2> </a>
 
-        {% for sale in sales %}
+        {% if sales %}
 
-          <div class="sales-div-sale">
-            <a href="{% url 'sale_by_id' sale.id %}">
-              {{ sale.product }}
-            </a>  
-              {{ sale.sale_date }}
-              {{ sale.quantity_sold }}
-          </div>
+          {% for sale in sales %}
 
-        {% endfor %}
-     
-      {% endif %}
+            <div class="sales-div-sale">
+              <a href="{% url 'sale_by_id' sale.id %}">
+                {{ sale.product }}
+              </a>  
+                {{ sale.sale_date }}
+                {{ sale.quantity_sold }}
+            </div>
 
+          {% endfor %}
+      
+        {% endif %}
+
+    {% else %}
+      <h2> Faça login para ter acesso às nossas vendas </h2>
+    {% endif %}
     </div>
     
 {% endblock %}

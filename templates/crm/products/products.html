@@ -6,29 +6,35 @@
     <div class="page_products-index-main">
       <h1> Products </h1>
 
-      <a href="{% url 'create_product' %}"> <h2> Cadastrar produto </h2> </a>
+      {% if request.user.is_authenticated %}
+        <a href="{% url 'create_product' %}"> <h2> Cadastrar produto </h2> </a>
+        
+        {% if products %}
+
+          {% for product in products %}
+
+          <div class="products-div-product">
+              <a href="{% url 'product_by_id' product.id %}">
+                {{ product.name }}
+              </a>
+                {{ product.description }}
+                {{ product.price }}
+                {{ product.quantity }}
+                {% if product.photo == "" or product.photo == null %}
+                  <img src="{% static 'assets/imgs/not-found.png' %}">
+                {% else %}
+                  <img src="{{product.photo.url}}" height="200px" width="200px">
+                {% endif %}
+              </div>
+
+          {% endfor %}
       
-      {% if products %}
+        {% endif %}
 
-        {% for product in products %}
-
-        <div class="products-div-product">
-            <a href="{% url 'product_by_id' product.id %}">
-              {{ product.name }}
-            </a>
-              {{ product.description }}
-              {{ product.price }}
-              {{ product.quantity }}
-              {% if product.photo == "" or product.photo == null %}
-                <img src="{% static 'assets/imgs/not-found.png' %}">
-              {% else %}
-                <img src="{{product.photo.url}}" height="200px" width="200px">
-              {% endif %}
-            </div>
-
-        {% endfor %}
-     
+      {% else %}
+          <h2> Faça login para ter acesso aos nossos produtos </h2>
       {% endif %}
+
     </div>
     
 {% endblock %}
