@@ -1,5 +1,10 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import redirect, render, get_object_or_404
+
 from crm.models import Product, Sale, Company
+
+from crm.forms import ProductForm, SaleForm
+
+from django.contrib import messages
 
 # Create your views here.
 def index(request):
@@ -14,10 +19,33 @@ def product_by_id(request, product_id):
     return render(request, 'crm/products/product_id.html', {"product": product})
 
 def create_product(request):
-    return render(request, 'crm/products/new_product.html')
+    form = ProductForm
+    
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES)
 
-def edit_product(request):
-    return render(request, 'crm/products/edit_product.html')
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Produto cadastrado com sucesso')
+            return redirect('index')
+        
+    return render(request, 'crm/products/new_product.html', {'form': form})
+
+def edit_product(request, product_id):
+    product = Product.objects.get(id=product_id)
+
+    form = ProductForm(instance=product)
+
+    if request.method == 'POST':
+
+        form = ProductForm(request.POST, request.FILES, instance=product)
+
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Produto editado com sucesso')
+            return redirect('index')
+        
+    return render(request, 'crm/products/edit_product.html', {'form': form, 'product_id': product_id})
 
 def sales(request):
     sales = Sale.objects.order_by("sale_date").all()

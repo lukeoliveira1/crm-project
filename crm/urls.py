@@ -7,9 +7,9 @@ urlpatterns = [
    path('products', products, name='products'),
    path('products/<int:product_id>', product_by_id, name='product_by_id'),
    path('create_product', create_product, name='create_product'),
-   path('edit_product', edit_product, name='edit_product'),
+   path('edit_product/<int:product_id>', edit_product, name='edit_product'),
    path('sales', sales, name='sales'),
    path('sales/<int:sale_id>', sale_by_id, name='sale_by_id'),
    path('create_sale', create_sale, name='create_sale'),
-   path('edit_sale', edit_sale, name='edit_sale'),
+   path('edit_sale/<int:sale_id>', edit_sale, name='edit_sale'),
 ]
