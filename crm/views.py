@@ -47,6 +47,12 @@ def edit_product(request, product_id):
         
     return render(request, 'crm/products/edit_product.html', {'form': form, 'product_id': product_id})
 
+def delete_product(request, product_id):
+    product = Product.objects.get(id=product_id)
+    product.delete()
+    messages.success(request, 'Produto excluído com sucesso')
+    return redirect('index')
+    
 def sales(request):
     sales = Sale.objects.order_by("sale_date").all()
     return render(request, 'crm/sales/sales.html', {"sales": sales})
@@ -100,3 +106,9 @@ def edit_sale(request, sale_id):
             return redirect('index')
         
     return render(request, 'crm/sales/edit_sale.html', {'form': form, 'sale_id': sale_id})
+
+def delete_sale(request, sale_id):
+    sale = Sale.objects.get(id=sale_id)
+    sale.delete()
+    messages.success(request, 'Venda excluída com sucesso')
+    return redirect('index')

@@ -22,7 +22,7 @@
            </div>
            <div class="div-options">
             <a href="{% url 'edit_product' product.id %}"> Editar </a>
-            <a href="#"> Deletar </a>
+            <a href="{% url 'delete_product' product.id %}"> Deletar </a>
           </div>
              
       {% endif %}
