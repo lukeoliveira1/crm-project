@@ -15,7 +15,7 @@ class Product(models.Model):
 class Sale(models.Model):
   product = models.ForeignKey(Product, on_delete=models.CASCADE)
   quantity_sold = models.IntegerField(null=False)
-  sale_date = models.DateTimeField(default=datetime.datetime.now, blank=False)
+  sale_date = models.DateField(default=datetime.date.today, blank=False)
 
   def __str__(self):
     return self.product.name

@@ -8,7 +8,7 @@ locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
 
 # Register your models here.
 class ListProduct(admin.ModelAdmin):
-    list_display = ('id', 'name', 'description', 'photo', 'price_formatted')
+    list_display = ('id', 'name', 'description', 'photo', 'quantity', 'price_formatted')
     list_display_links = ('id','name')
     search_fields = ('name', 'description')
     list_filter = ('name', 'price')

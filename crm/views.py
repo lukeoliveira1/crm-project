@@ -56,7 +56,47 @@ def sale_by_id(request, sale_id):
     return render(request, 'crm/sales/sale_id.html', {"sale": sale})
 
 def create_sale(request):
-    return render(request, 'crm/sales/new_sale.html')
+    form = SaleForm
 
-def edit_sale(request):
-    return render(request, 'crm/sales/edit_sale.html')
+    if request.method == 'POST':
+        form = SaleForm(request.POST)
+
+        product_id = form['product'].value()
+        quantity_sold = form['quantity_sold'].value()
+
+        company = Company.objects.get(id=1)
+        product = Product.objects.get(id=product_id)
+        
+        if form.is_valid():
+            
+
+            if int(product.quantity) >= int(quantity_sold):
+                # add on financial of company
+                company.total_revenue += (int(product.price) * int(quantity_sold))
+                # remove quantity_sold from product
+                product.quantity -= int(quantity_sold)
+
+                form.save()
+                product.save()
+                company.save()
+                messages.success(request, 'Venda cadastrada com sucesso')
+                return redirect('index')
+            else:
+                messages.error(request, 'Estoque do produto esgotado!')
+
+    return render(request, 'crm/sales/new_sale.html',{'form': form})
+
+def edit_sale(request, sale_id):
+    sale = Sale.objects.get(id=sale_id)
+    
+    form = SaleForm(instance=sale)
+
+    if request.method == 'POST':
+        form = SaleForm(request.POST, instance=sale)
+        
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Venda editada com sucesso')
+            return redirect('index')
+        
+    return render(request, 'crm/sales/edit_sale.html', {'form': form, 'sale_id': sale_id})

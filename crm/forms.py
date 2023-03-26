@@ -1,3 +1,4 @@
+import datetime
 from django import forms
 
 from crm.models import Product, Sale, Company
@@ -30,7 +31,7 @@ class SaleForm(forms.ModelForm):
       fields = "__all__"
       labels = {
          'product': 'Produto',
-         'quantity_sold': 'Quantidade Vendida',
+         'quantity_sold': 'Quantidade',
          'sale_date': 'Data da venda',
       }
 
@@ -38,7 +39,7 @@ class SaleForm(forms.ModelForm):
          'product': forms.Select(attrs={'class': 'form-control'}),
          'quantity_sold': forms.NumberInput(attrs={'class': 'form-control'}),
          'sale_date': forms.DateInput(
-                format = '%d/%m/%Y',
+                format = '%d/%m/%Y', 
                 attrs={
                     'type':'date',
                     'class':'form-control'

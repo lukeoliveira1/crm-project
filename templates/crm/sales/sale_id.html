@@ -14,7 +14,7 @@
           {{ sale.sale_date }}
         </div>
         <div class="div-options">
-          <a href="{% url 'edit_sale' %}"> Editar </a>
+          <a href="{% url 'edit_sale' sale.id %}"> Editar </a>
           <a href="#"> Deletar </a>
         </div>
      
