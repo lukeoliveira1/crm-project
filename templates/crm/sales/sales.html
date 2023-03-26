@@ -1,0 +1,29 @@
+{% extends 'shared/base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <div class="index-main">
+      <h1> Sales </h1>
+
+      <a href="{% url 'create_sale' %}"> <h2> Cadastrar venda </h2> </a>
+
+      {% if sales %}
+
+        {% for sale in sales %}
+
+          <div class="sales-div-sale">
+            <a href="{% url 'sale_by_id' sale.id %}">
+              {{ sale.product }}
+            </a>  
+              {{ sale.sale_date }}
+              {{ sale.quantity_sold }}
+          </div>
+
+        {% endfor %}
+     
+      {% endif %}
+
+    </div>
+    
+{% endblock %}

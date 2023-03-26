@@ -1,0 +1,26 @@
+{% load static %}
+
+<header class="header">
+
+  
+  <div>
+    <form class="form" action=""> <!--adicionar aqui depois { url 'search' }-->
+      
+      <button class="button_search" type="submit">
+        <img class="search_icon" src="{% static 'assets/ícones/search.png' %}" alt="ícone de search">
+      </button>
+      <input class="search_input" type="text" name="buscar" placeholder="O que você procura?">
+      
+      
+    </form>
+  </div>
+  
+  <div class="links"> 
+    <a href="{% url 'index' %}"> Home </a>
+    <a href="{% url 'products' %}"> Produtos </a>
+    <a href="{% url 'sales' %}"> Vendas </a>
+    <a href='./'> Login </a>
+
+  </div> 
+
+</header>

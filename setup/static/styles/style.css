@@ -1,0 +1,135 @@
+body {
+  min-height: 100vh;
+  background: linear-gradient(#d8dadd,#d6d8db,#d3d5d8);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  font-size: 1.2rem;
+}
+
+.header {
+  background-color: #c0c2c5;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 3%;
+}
+
+.links {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.links a {
+  text-decoration: none;
+  font-size: 1.2rem;
+  margin-right: 10%;
+}
+
+.form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.search_input {
+  align-items: center;
+  border: none;
+  font-size: 1rem;
+  height: 12px;
+  padding: 10px;
+  width: 300px;
+}
+
+.button_search {
+  margin-right: 5px;
+}
+
+.search_icon {
+  cursor: pointer;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: #c0c2c5;
+  padding: 3%;
+}
+
+.footer a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+.footer_icon {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-left: 2%;
+  width: 50%;
+}
+
+.footer_link {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-right: 2%;
+  width: 50%;
+}
+
+a {
+  text-decoration: none;
+  color: #000000;
+}
+
+h1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+h2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.page_products-index-main {
+  display: flex;
+  flex-direction: column;
+}
+
+.products-div-product {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.div-options {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 5%;
+}
+
+.page_sales-index-main {
+  display: flex;
+  flex-direction: column;
+}
+
+.sales-div-sale   {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}

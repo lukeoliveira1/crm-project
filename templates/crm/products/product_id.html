@@ -1,0 +1,31 @@
+{% extends 'shared/base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <div class="page_products-index-main">
+      <h1> Products </h1>
+      
+      {% if product %}
+
+          <div class="products-div-product">
+
+            {{ product.name }}
+            {{ product.description }}
+            {{ product.price }}
+            {{ product.quantity }}
+            {% if product.photo == "" or product.photo == null %}
+              <img src="{% static 'assets/imgs/not-found.png' %}">
+            {% else %}
+              <img src="{{product.photo.url}}" height="200px" width="200px">
+            {% endif %}
+           </div>
+           <div class="div-options">
+            <a href="{% url 'edit_product' %}"> Editar </a>
+            <a href="#"> Deletar </a>
+          </div>
+             
+      {% endif %}
+    </div>
+    
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'shared/base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <div class="index-main">
+      <h1> Sales </h1>
+
+      {% if sale %}
+
+        <div class="sales-div-sale">
+          {{ sale.product }}
+          {{ sale.quantity_sold }}
+          {{ sale.sale_date }}
+        </div>
+        <div class="div-options">
+          <a href="{% url 'edit_sale' %}"> Editar </a>
+          <a href="#"> Deletar </a>
+        </div>
+     
+      {% endif %}
+
+    </div>
+    
+{% endblock %}

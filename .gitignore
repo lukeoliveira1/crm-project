@@ -1,0 +1,7 @@
+-files
+db.sqlite3
+*.pyc
+*.json 
+/venv
+git
+.env
