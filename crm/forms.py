@@ -1,7 +1,7 @@
 import datetime
 from django import forms
 
-from crm.models import Product, Sale, Company
+from crm.models import Product, Sale
 
 class ProductForm(forms.ModelForm):
     

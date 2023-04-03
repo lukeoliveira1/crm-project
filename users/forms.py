@@ -71,26 +71,24 @@ class RegisterForm(forms.Form):
       ),
   )
 
-  # validations
+  # usename validation
   def clean_nome_cadastro(self):
-    nome = self.cleaned_data.get('nome_cadastro') # pegando o nome cadastrado
+    nome = self.cleaned_data.get('nome_cadastro') 
 
     if nome:
-      nome = nome.strip() # retirando os espaços do nome
+      nome = nome.strip() 
       if ' ' in nome:
-        # validação do próprio form
         raise forms.ValidationError('Espaços não são permitidos nesse campo')
     else:
       return nome
 
-  # validação senhas iguais
+  # equals password validation
   def clean_senha_2(self):
-    senha_1 = self.cleaned_data.get('senha_1') # pegando o senha 1
-    senha_2 = self.cleaned_data.get('senha_2') # pegando o senha 2
+    senha_1 = self.cleaned_data.get('senha_1') 
+    senha_2 = self.cleaned_data.get('senha_2')
 
-    if senha_1 and senha_2: # validando que ambas existem
+    if senha_1 and senha_2: 
       if senha_1 != senha_2:
-        # validação do próprio form
         raise forms.ValidationError('Senhas não são iguais')
       else:
         return senha_2

@@ -3,7 +3,6 @@ from crm.models import Product, Sale, Company
 
 import locale
 
-# Set the locale to Brazil (Portuguese)
 locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8') 
 
 # Register your models here.
@@ -15,7 +14,6 @@ class ListProduct(admin.ModelAdmin):
     list_per_page = 10
 
     def price_formatted(self, obj):
-        # grouping - ensures that the thousands separator is added to the formatted value.
         return locale.currency(obj.price, grouping=True)
     price_formatted.short_description = 'Price'
 
@@ -38,7 +36,6 @@ class ListCompany(admin.ModelAdmin):
     list_per_page = 10
 
     def total_revenue_formatted(self, obj):
-        # grouping - ensures that the thousands separator is added to the formatted value.
         return locale.currency(obj.total_revenue, grouping=True)
     total_revenue_formatted.short_description = 'Total Revenue'
 
